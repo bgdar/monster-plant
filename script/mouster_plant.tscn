@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://brpawbj8tkqtl"]
+
+[ext_resource type="PackedScene" uid="uid://b0d5tkycypvhl" path="res://script/monster.tscn" id="1_un2lw"]
+
+[node name="mouster plant" instance=ExtResource("1_un2lw")]
