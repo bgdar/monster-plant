@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci383iohv5uxl"]
+
+[ext_resource type="Script" uid="uid://hxgoxfudhtc0" path="res://script/global-scene/human_controller.gd" id="1_h7yo8"]
+
+[node name="Human-controller" type="Node2D"]
+script = ExtResource("1_h7yo8")
