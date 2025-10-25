@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://b0d5tkycypvhl"]
+[gd_scene load_steps=79 format=4 uid="uid://b0d5tkycypvhl"]
 
 [ext_resource type="Script" uid="uid://c2nnogns5vpy5" path="res://script/monster.gd" id="1_28vnb"]
 [ext_resource type="Texture2D" uid="uid://brwrm0uj75b4" path="res://assert/tileset/land/plant.png" id="1_vq2n1"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ckmmuq6ekxcl8" path="res://assert/character/mosters/Attack/Plant_Attack.png" id="3_4qo3e"]
 [ext_resource type="Texture2D" uid="uid://byx8wmngfwli2" path="res://assert/character/mosters/Run/Plant_Run.png" id="3_85ajc"]
 [ext_resource type="Texture2D" uid="uid://dgahtdgcr4ujb" path="res://assert/tileset/rock-stone/Rokc3_snow_shadow5.png" id="6_jk1an"]
-[ext_resource type="Texture2D" uid="uid://l61h85qaowrr" path="res://assert/collections/bar-under.png" id="7_uynee"]
-[ext_resource type="Texture2D" uid="uid://t784i6acbklm" path="res://assert/collections/progres-bar.png" id="8_0sgas"]
 [ext_resource type="Texture2D" uid="uid://3fwnxoeio363" path="res://assert/tileset/tree/Trees_shadow_source.png" id="8_ys11e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uynee"]
@@ -2037,8 +2035,6 @@ text = "HP"
 layout_mode = 2
 step = 5.0
 value = 100.0
-texture_under = ExtResource("7_uynee")
-texture_progress = ExtResource("8_0sgas")
 
 [node name="exp" type="Label" parent="monster/Game-bar"]
 layout_mode = 2

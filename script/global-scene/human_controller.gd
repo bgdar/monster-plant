@@ -13,7 +13,6 @@ func human_attack(currentAttack : int) -> void:
 	emit_signal("Human_HP",HP)
 	
 
-
 func _ready() -> void:
 	randomize() # biar randi_range selalu acak tiap run
 
