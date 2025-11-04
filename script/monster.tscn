@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://b0d5tkycypvhl"]
+[gd_scene load_steps=81 format=4 uid="uid://b0d5tkycypvhl"]
 
 [ext_resource type="Script" uid="uid://c2nnogns5vpy5" path="res://script/monster.gd" id="1_28vnb"]
 [ext_resource type="Texture2D" uid="uid://brwrm0uj75b4" path="res://assert/tileset/land/plant.png" id="1_vq2n1"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://byx8wmngfwli2" path="res://assert/character/mosters/Run/Plant_Run.png" id="3_85ajc"]
 [ext_resource type="Texture2D" uid="uid://dgahtdgcr4ujb" path="res://assert/tileset/rock-stone/Rokc3_snow_shadow5.png" id="6_jk1an"]
 [ext_resource type="Texture2D" uid="uid://3fwnxoeio363" path="res://assert/tileset/tree/Trees_shadow_source.png" id="8_ys11e"]
+[ext_resource type="PackedScene" uid="uid://c2np4l1sph6q2" path="res://script/human-warior.tscn" id="9_24gft"]
+[ext_resource type="PackedScene" uid="uid://bnle248q7hy1i" path="res://script/human-normal.tscn" id="10_uynee"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uynee"]
 texture = ExtResource("1_ys11e")
@@ -2051,3 +2053,41 @@ scale = Vector2(2, 2)
 [node name="objects" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_0sgas")
+
+[node name="human-warior" parent="." instance=ExtResource("9_24gft")]
+visible = false
+position = Vector2(532, 1105)
+
+[node name="human-warior2" parent="." instance=ExtResource("9_24gft")]
+visible = false
+position = Vector2(1213, 1211)
+
+[node name="human-warior3" parent="." instance=ExtResource("9_24gft")]
+visible = false
+position = Vector2(-505, 1455)
+
+[node name="human-warior4" parent="." instance=ExtResource("9_24gft")]
+visible = false
+position = Vector2(2802, -176)
+
+[node name="human-warior5" parent="." instance=ExtResource("9_24gft")]
+visible = false
+position = Vector2(607, -767)
+
+[node name="human-normal2" parent="." instance=ExtResource("10_uynee")]
+visible = false
+position = Vector2(1891, -550)
+
+[node name="human-normal3" parent="." instance=ExtResource("10_uynee")]
+visible = false
+position = Vector2(-977, 50)
+
+[node name="human-normal8" parent="." instance=ExtResource("10_uynee")]
+visible = false
+position = Vector2(-649, 762)
+
+[node name="human-normal9" parent="." instance=ExtResource("10_uynee")]
+position = Vector2(3159, 673)
+
+[node name="human-warior6" parent="." instance=ExtResource("9_24gft")]
+position = Vector2(1037, 606)

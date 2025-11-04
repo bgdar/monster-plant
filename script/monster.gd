@@ -17,28 +17,20 @@ func handle_attack():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "human":
-			print("attack") #gunakan nantik jika ada attack
 			HumanController.human_attack(ATTACK)
 
 # saat node sudah siap (  fisic sudah ada )
-func _ready() -> void:
-	HumanController.spawn(30,human_perent,alas)
-	#HumanController.Human_HP.connect("")
+#func _ready() -> void:	
+	#HumanController.spawn(30,human_perent,alas)
 
 # dipanggil tiap frame physics ( default 60 fps )
 func _physics_process(delta: float) -> void:
-	
-	## Add the gravity.kita tidak perlu grafitasi di game 2d top dowm
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-	
+
 	var direction := Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	# attack sudah di tambahkan di project settinsg
 	var  attack := Input.is_action_pressed("attack") # hold ( pendam)
-	
+	print("monster position",position)
+
 	if direction:
 		velocity = direction * SPEED
 		if direction.y < 0:
@@ -75,7 +67,4 @@ func _physics_process(delta: float) -> void:
 		monster_ui.speed_scale = 2.0
 	elif Input.is_action_just_pressed("attack") :#jika tombol di lepas 
 		monster_ui.speed_scale = 1.0
-	
-	
-
 	move_and_slide()

@@ -1,16 +1,13 @@
 extends CharacterBody2D
 
-@onready var human_ui: AnimatedSprite2D = $AnimatedSprite2D
+@onready var human_normal_ui: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hp: ProgressBar = $HP
 
 @onready var timer_die: Timer = $"timer-die"
-# moster
 
 const SPEED = 120.0
 
 var moster_ui : CharacterBody2D = null 
-
-var action = randi_range(1,2) 
 
 var is_move : bool= false
 var move_distance: float = 450.0   # jarak yang harus ditempuh
@@ -40,8 +37,6 @@ func _on_timer_timeout() -> void:
 		#timer.stop() #hentikan loop
 	queue_free() # nantikl jika ada masalah sesauikan dengan human di node
 
-
-
 func _ready() -> void:
 	HumanController.Human_HP.connect(die)
 	HumanController.Human_HP.connect(update_hp)
@@ -60,40 +55,41 @@ func _on_area_deteksi_body_exited(body: Node2D) -> void:
 		is_move = false
 func _physics_process(delta: float) -> void:
 
-	if is_move  && action == 1:
+	if is_move  :
 		var velocity = direction_move * SPEED * delta
 		position += velocity
 		moved += velocity.length()
 		# Animasi sesuai arah
 		if direction_move.y < 0:
-			human_ui.play("runUp")
+			human_normal_ui.play("runUp")
 		elif direction_move.y > 0:
-			human_ui.play("runDown")
+			human_normal_ui.play("runDown")
 		elif direction_move.x > 0:
-			human_ui.play("runX")
-			human_ui.flip_h = false
+			human_normal_ui.play("runX")
+			human_normal_ui.flip_h = false
 		elif direction_move.x < 0:
-			human_ui.play("runX")
-			human_ui.flip_h = true
+			human_normal_ui.play("runX")
+			human_normal_ui.flip_h = true
 		# Berhenti kalau sudah sampai jarak tujuan
 		if moved >= move_distance:
 			is_move = false
 			moved = 0.0
 			randomize_direction_move() # sesuakan arah baru
-			human_ui.play("idle")   # ganti ke animasi diam
-	elif is_move && action == 2 :
+			human_normal_ui.play("idle")   # ganti ke animasi diam
+	#elif is_move && action == 2 :
 		#print("Human:", position, " Monster:", HumanController.monster_position, " Direction:", (HumanController.monster_position - position).normalized())
 		#human_ui.position += (HumanController.monster_position  - human_ui.position ) / SPEED
-		print("moster position : ",HumanController.monster_position , " human position :",position)
+		#print("moster position : ",HumanController.monster_position , " human position :",position)
 		#position = position.move_toward(HumanController.monster_position, SPEED * get_process_delta_time())
 		#print("Human:", position, 
 	  #" Monster:", HumanController.monster_position, 
 	  #" Direction:", direction_move, 
 	  #" Distance:", position.distance_to(HumanController.monster_position))
-		var direection_attack = (moster_ui.position - position).normalized()
-		velocity = direection_attack * SPEED
-		move_and_slide()
-		human_ui.play("run-attack-top")
+		#var direection_attack = (moster_ui.position - position).normalized()
+		#velocity = direection_attack * SPEED
+		#print("veloccity :",velocity)
+		#move_and_slide()
+		#human_ui.play("runDown")
 	else :
-		human_ui.play("idle")
+		human_normal_ui.play("idle")
 	
