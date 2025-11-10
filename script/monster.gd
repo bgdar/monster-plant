@@ -10,12 +10,15 @@ const ATTACK = 150
 @onready var human_perent: Node2D = $"../human_perent"
 @onready var alas: TileMapLayer = $"../alas"
 
-
 var is_attack :String= "attackX"
+enum MonsterPosition {TOP,DOWN,RIGHT,LEFT ,NONE}
+var is_position : MonsterPosition = MonsterPosition.NONE  
 
 func handle_attack():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
+		print("Collersion : ",collision.get_collider().name)
+		
 		if collision.get_collider().name == "human":
 			HumanController.human_attack(ATTACK)
 
@@ -25,14 +28,11 @@ func handle_attack():
 
 # dipanggil tiap frame physics ( default 60 fps )
 func _physics_process(delta: float) -> void:
-
 	var direction := Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	# attack sudah di tambahkan di project settinsg
 	var  attack := Input.is_action_pressed("attack") # hold ( pendam)
-	print("monster position",position)
-
 	if direction:
-		velocity = direction * SPEED
+		velocity = direction * SPEED 
 		if direction.y < 0:
 			is_attack = "attackTop"
 			if attack :
@@ -40,6 +40,7 @@ func _physics_process(delta: float) -> void:
 				handle_attack()
 			else :
 				monster_ui.play("runTop")
+			is_position = MonsterPosition.TOP
 		elif direction.y > 0:
 			is_attack = "attackDown"
 			if attack :
@@ -47,6 +48,7 @@ func _physics_process(delta: float) -> void:
 				handle_attack()
 			else :
 				monster_ui.play("runDown")
+			is_position = MonsterPosition.DOWN
 		else:
 			is_attack = "attackX"
 			if attack :
@@ -54,13 +56,26 @@ func _physics_process(delta: float) -> void:
 				handle_attack()
 			else :
 				monster_ui.play("runX")
-		
-		monster_ui.flip_h = direction.x < 0
+			# hanya ubah posisi horizontal di sini
+			monster_ui.flip_h = direction.x < 0
+			is_position = MonsterPosition.RIGHT if monster_ui.flip_h else MonsterPosition.LEFT
+		#monster_ui.flip_h = direction.x < 0
+		#is_position = MonsterPosition.LEFT if monster_ui.flip_h == true else MonsterPosition.RIGHT
 	
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-		monster_ui.play("idle")
+		match is_position :
+			MonsterPosition.TOP :
+				monster_ui.play("idleTop")
+			MonsterPosition.DOWN :
+				monster_ui.play("idleDown")
+			MonsterPosition.LEFT :
+				monster_ui.play("idleLeft")
+			MonsterPosition.RIGHT:
+				monster_ui.play("idleRight")
+			_:
+				monster_ui.play("idleDown")
 	# jalanak untuk sat di tekan "a" biasanya
 	if Input.is_action_just_pressed("attack"):
 		monster_ui.play(is_attack)

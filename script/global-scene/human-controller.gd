@@ -5,14 +5,11 @@ extends Node2D
 var HP : int = randi_range(80,100)
 signal Human_HP(HP)
 
-
 func human_attack(currentAttack : int) -> void:
 	"""update hp human"""
 	HP -= currentAttack
 	emit_signal("Human_HP",HP)
-	
-	
-	
+
 
 func _ready() -> void:
 	randomize() # biar randi_range selalu acak tiap run

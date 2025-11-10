@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 HumanController="*res://script/global-scene/human-controller.gd"
+CurrentMap="*res://script/map/current-map.tscn"
 
 [input]
 

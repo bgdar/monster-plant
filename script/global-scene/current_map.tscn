@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csrnlar4edcbn"]
+
+[ext_resource type="Script" uid="uid://bgioo54gxybj3" path="res://script/global-scene/current_map.gd" id="1_d7mmk"]
+
+[node name="CurrentMap" type="Node2D"]
+script = ExtResource("1_d7mmk")

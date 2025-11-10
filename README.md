@@ -1,8 +1,11 @@
 # moster plant 
-
 mainkan mosternya dan makan semua yang menghalang
 __Game 2D top-down dengan gaya pixel art__
 
+<p align="center">
+
+</p>
+> 
 ### key binding 
 1 . `panah-kiri + a (hold)` | `panah-kanan + a (hold)` | `panah-atas + a (hold)` | `panah-bawah + a (hold)` | `a`
 	 melakukan attack baik saat run ( slow ) atau biasa ( flash ) 
